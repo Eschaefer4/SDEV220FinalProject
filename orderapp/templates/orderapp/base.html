@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bob's Burgers</title>
+    <link rel="stylesheet" href="{% static 'css/orderapp.css' %}">
+</head>
+<body>
+    <!-- basic template, has title and space for whatever is on the page -->
+    <h1><a href="{% url 'orderapp:menuitem_list' %}">Bob's Burgers</a></h1>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

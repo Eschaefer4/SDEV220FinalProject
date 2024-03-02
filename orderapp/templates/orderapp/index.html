@@ -1,0 +1,43 @@
+{% extends 'orderapp/base.html' %}
+
+{% block content %}
+<!-- greet the user and show logout button and view cart button if logged in -->
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+    <a href="{% url 'orderapp:view_cart' %}">
+        <button type="button">View Cart</button>
+    </a>
+    <a href="{% url 'orderapp:view_profile' %}">
+        <button type="button">View Profile</button>
+    </a>
+{% else %}
+    <!-- only show login button if not logged in -->
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}"><button type="button">Log In</button></a>
+{% endif %}
+
+<h1>Menu</h1>
+    <!-- get all items from menu item table to display on page -->
+    <ul class="menuitem-list">
+        {% for menuitem in menuitems %}
+            <li class="menu-item">
+                <!-- show image, name, description, price -->
+                <img src="{{ menuitem.image.url }}" alt="{{ menuitem.name }}" width="200" height="150">
+                <h2>{{ menuitem.name }}</h2>
+                <p>{{ menuitem.description }}</p>
+                <p>Price: ${{ menuitem.price }}</p>
+                {% if user.is_authenticated %}
+                    <!-- can add to cart if logged in -->
+                    <a class="cart-button" href="{% url 'orderapp:add_to_cart' menuitem.id %}">Add to Cart</a>
+                {% else %}
+                    <!-- button will redirect to login page if not logged in -->
+                    <a class="cart-button" href="{% url 'login' %}">Log in to order</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

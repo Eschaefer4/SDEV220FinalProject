@@ -1,0 +1,13 @@
+{% extends 'orderapp/base.html' %}
+<!-- page for viewing profile for a user -->
+{% block content %}
+<h2>Profile for {{ user.username }}</h2>
+<h3>Name</h3>
+<p>{{ profile.name }}</p>
+<h3>Email Address</h3>
+<p>{{ profile.email }}</p>
+<!-- can click this button to go and edit profile -->
+<a class="btn btn-secondary" href="{% url 'orderapp:edit_profile' pk=profile.pk %}">
+<button type="button">Edit Profile</button>
+</a>
+{% endblock %}

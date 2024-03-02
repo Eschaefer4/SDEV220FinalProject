@@ -1,0 +1,27 @@
+{% extends 'orderapp/base.html' %}
+
+{% block content %}
+ 
+    <h1>Your Shopping Cart</h1>
+ 
+    <div class="menuitem-list">
+    <!-- get all items from user cart -->
+    {% for item in cart_items %}
+    <div class="menu-item-cart">
+        <!-- show item name and quantity for each unique item in cart -->
+        <p>{{ item.menuitem.name }} ({{ item.quantity }})</p>
+        <p>Price: ${{ item.menuitem.price }}</p>
+        <a href="{% url 'orderapp:remove_from_cart' item.id %}">Remove</a>
+    </div>
+    {% empty %}
+    <!-- if the cart is empty, say so -->
+    <p>Your cart is empty.</p>
+    {% endfor %}
+ 
+    </div>
+    <!-- display total price for items in cart -->
+    <p>Total Price: ${{ total_price }}</p>
+ 
+    <a href="{% url 'orderapp:menuitem_list' %}">Continue Shopping</a>
+ 
+{% endblock %}

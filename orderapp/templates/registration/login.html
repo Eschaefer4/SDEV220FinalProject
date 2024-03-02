@@ -1,0 +1,14 @@
+
+{% extends 'orderapp/base.html' %}
+{% block content %}
+<!-- simple login page, with register button at bottom too -->
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Log In</button>
+</form>
+<a href="{% url 'signup' %}">
+  <button>Register</button>
+</a>
+{% endblock %}

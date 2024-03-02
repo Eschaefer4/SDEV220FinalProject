@@ -1,0 +1,7 @@
+{% extends 'orderapp/base.html' %}
+<!-- basic logout page as backup, though logging out redirects to home page -->
+{% block content %}
+<h2>You have successfully logged out.</h2>
+<a href="{% url 'login' %}">Log In</a>
+<a href="{% url 'home' %}">Back to Menu</a>
+{% endblock %}
