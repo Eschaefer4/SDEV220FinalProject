@@ -3,8 +3,8 @@
 {% block title %}Sign Up{% endblock %}
 <!-- basic account signup page -->
 {% block content %}
-<h2>Sign up</h2>
-<form method="post">
+<p class="pagetitle">Sign up</h2>
+<form method="post" class="edittingprofile">
   {% csrf_token %}
   {{ form }}
   <button type="submit">Sign Up</button>

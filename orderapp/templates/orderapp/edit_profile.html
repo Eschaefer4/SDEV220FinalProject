@@ -1,11 +1,41 @@
 {% extends 'orderapp/base.html' %}
 <!-- page for editing a profile -->
+
 {% block content %}
-    <h2>Editing Profile</h2>
-    <form method="POST">{% csrf_token %}
+<!--Copying Navbar-->
+{% if user.is_authenticated %}
+    <p class="greeting">Hi {{ user.username }}!</p>
+    <div class="navbar">
+        <form action="{% url 'logout' %}" method="post" style="display:inline">
+            {% csrf_token %}
+            <button type="submit" class="navbutton">Log Out</button>
+        </form>
+        <a href="{% url 'orderapp:view_cart' %}">
+            <button type="button" class="navbutton">View Cart</button>
+        </a>
+        <a href="{% url 'orderapp:view_profile' %}">
+            <button type="button" class="navbutton">View Profile</button>
+        </a>
+        <a href="{% url 'orderapp:menuitem_list' %}">
+            <button type="button" class="navbutton">Menu</button>
+        </a>
+    </div>
+{% else %}
+    <p class="greeting">You are not logged in</p>
+    <div class="navbar">
+        <a href="{% url 'login' %}"><button type="button" class="navbutton">Log In</button></a>
+    </div>
+{% endif %}
+<!--END of Copying Navbar-->
+    <p class="pagetitle">Editing Profile</p>
+    <div class="editprofile">
+    <form method="POST" style="display:inline" class="edittingprofile">
+        {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-secondary">Save</button>
+        <button type="submit" class="profilebutton">Save</button>
     </form>
+    </div>
+    <br>
     <!-- can also cancel update -->
-    <a href="{%url 'orderapp:view_profile' %}"><button type="button">Cancel</button></a>
+    <a href="{%url 'orderapp:view_profile' %}"><button type="button" class="profilebutton">Cancel</button></a>
 {% endblock %}

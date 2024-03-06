@@ -1,26 +1,37 @@
+
 {% extends 'orderapp/base.html' %}
 
 {% block content %}
 <!-- greet the user and show logout button and view cart button if logged in -->
-{% if user.is_authenticated %}
-    Hi {{ user.username }}!
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Log Out</button>
-    </form>
-    <a href="{% url 'orderapp:view_cart' %}">
-        <button type="button">View Cart</button>
-    </a>
-    <a href="{% url 'orderapp:view_profile' %}">
-        <button type="button">View Profile</button>
-    </a>
-{% else %}
-    <!-- only show login button if not logged in -->
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}"><button type="button">Log In</button></a>
-{% endif %}
+<!--Using As Navbar-->
+    {% if user.is_authenticated %}
+        <p class="greeting">Hi {{ user.username }}!</p>
+        <div class="navbar">
+        <form action="{% url 'logout' %}" method="post" style="display:inline">
+            {% csrf_token %}
+            <button type="submit" class="navbutton">Log Out</button>
+        </form>
+        <a href="{% url 'orderapp:view_cart' %}">
+            <button type="button" class="navbutton">View Cart</button>
+        </a>
+        <a href="{% url 'orderapp:view_profile' %}">
+            <button type="button" class="navbutton">View Profile</button>
+        </a>
+        <a href="{% url 'orderapp:menuitem_list' %}">
+            <button type="button" class="navbutton">Menu</button>
+        </a>
+        </div>
+    {% else %}
+        <!-- only show login button if not logged in -->
+        
+            <p class="greeting">You are not logged in</p>
+        <div class="navbar">
+            <a href="{% url 'login' %}"><button type="button" class="navbutton">Log In</button></a>
+        </div>
+    {% endif %}
 
-<h1>Menu</h1>
+
+<p class="pagetitle">Menu</p>
     <!-- get all items from menu item table to display on page -->
     <ul class="menuitem-list">
         {% for menuitem in menuitems %}
@@ -28,7 +39,7 @@
                 <!-- show image, name, description, price -->
                 <img src="{{ menuitem.image.url }}" alt="{{ menuitem.name }}" width="200" height="150">
                 <h2>{{ menuitem.name }}</h2>
-                <p>{{ menuitem.description }}</p>
+                <p><i>{{ menuitem.description }}</i></p>
                 <p>Price: ${{ menuitem.price }}</p>
                 {% if user.is_authenticated %}
                     <!-- can add to cart if logged in -->

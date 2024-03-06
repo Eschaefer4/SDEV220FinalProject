@@ -1,14 +1,19 @@
 
 {% extends 'orderapp/base.html' %}
+
 {% block content %}
 <!-- simple login page, with register button at bottom too -->
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
+<p class="pagetitle">Log In</h2>
+<div class="loginform">
+  <form method="post" class="loginmenu" style="display:inline">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <button type="submit" class="loginbutton">Log In</button>
+  </form>
+
 <a href="{% url 'signup' %}">
-  <button>Register</button>
+  <button class="loginbutton">Register</button>
 </a>
+</div>
 {% endblock %}
