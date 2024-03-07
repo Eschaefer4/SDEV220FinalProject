@@ -1,27 +1,58 @@
+
 {% extends 'orderapp/base.html' %}
 
 {% block content %}
  
-    <h1>Your Shopping Cart</h1>
+{% if user.is_authenticated %}
+    <p class="greeting">Hi {{ user.username }}!</p>
+    <div class="navbar">
+        <form action="{% url 'logout' %}" method="post" style="display:inline">
+            {% csrf_token %}
+            <button type="submit" class="navbutton">Log Out</button>
+        </form>
+        <a href="{% url 'orderapp:view_cart' %}">
+            <button type="button" class="navbutton">View Cart</button>
+        </a>
+        <a href="{% url 'orderapp:view_profile' %}">
+            <button type="button" class="navbutton">View Profile</button>
+        </a>
+        <a href="{% url 'orderapp:menuitem_list' %}">
+            <button type="button" class="navbutton">Menu</button>
+        </a>
+    </div>
+{% else %}
+<!-- only show login button if not logged in -->
+
+    <p class="greeting">You are not logged in</p>
+<div class="navbar">
+    <a href="{% url 'login' %}"><button type="button" class="navbutton">Log In</button></a>
+</div>
+{% endif %}
+
+    <p class="pagetitle">Your Shopping Cart</p>
  
     <div class="menuitem-list">
     <!-- get all items from user cart -->
     {% for item in cart_items %}
     <div class="menu-item-cart">
         <!-- show item name and quantity for each unique item in cart -->
-        <p>{{ item.menuitem.name }} ({{ item.quantity }})</p>
+        <p><b>{{ item.menuitem.name }} ({{ item.quantity }})</b></p>
         <p>Price: ${{ item.menuitem.price }}</p>
-        <a href="{% url 'orderapp:remove_from_cart' item.id %}">Remove</a>
+        <a href="{% url 'orderapp:remove_from_cart' item.id %}">
+            <button type="button" class="cartbutton">Remove</button>
+        </a>
     </div>
     {% empty %}
     <!-- if the cart is empty, say so -->
-    <p>Your cart is empty.</p>
+    <p class="pricetext">Your cart is empty.</p>
     {% endfor %}
  
     </div>
     <!-- display total price for items in cart -->
-    <p>Total Price: ${{ total_price }}</p>
+    <p class="pricetext">Total Price: ${{ total_price }}</p>
  
-    <a href="{% url 'orderapp:menuitem_list' %}">Continue Shopping</a>
+    <a href="{% url 'orderapp:menuitem_list' %}">
+        <center><button type="button" class="cartbutton">Continue Shopping</button></center>
+    </a>
  
 {% endblock %}

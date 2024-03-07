@@ -5,6 +5,8 @@
     justify-content: space-between; /* Space items evenly along the main axis */
     list-style: none; /* Remove list styles */
     padding: 0;
+    border: 5px solid black;
+    background-color:#EF212D;
 }
 
 /* specifically for menu items on the cart page */
@@ -13,9 +15,12 @@
     flex: 1; /* Grow to fill available space evenly */
      /* Limit item width to avoid overcrowding */
     margin: 10px; /* Add spacing between items */
-    border: 1px solid #ccc; /* Add a border for visual separation */
+    border: 5px solid black; /* Add a border for visual separation */
     padding: 10px;
     text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #F8E01A;
+    
 }
 
 /* for menu items on the menu page */
@@ -23,18 +28,159 @@
     flex: 1; /* Grow to fill available space evenly */
     max-width: 30%; /* Limit item width to avoid overcrowding */
     margin: 10px; /* Add spacing between items */
-    border: 1px solid #ccc; /* Add a border for visual separation */
+    border: 5px solid black; /* Add a border for visual separation */
     padding: 10px;
     text-align: center;
+    background-color: #F8E01A;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* Style the "Buy Now" button */
 .cart-button {
     display: block;
     margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #EF212D;
+    color: black;
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 3px solid black;
+    font-weight: bold;
+}
+.cart-button:hover {
+    background-color: #990000;
+}
+
+/* Logo Styling */
+.boblogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.navbar {
+    position: relative;
+    top: 8px;
+    padding: 5px;
+    width: auto;
+    height: auto;
+    border: 5px solid black;
+    background-color: #EF212D;
+
+}
+
+body {
+    background-color: #F9E076
+}
+
+.navbutton {
+    background-color: #F8E01A;
+    border: 3px solid black;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.navbutton:hover {
+    background-color: #C69F06;
+}
+
+.greeting {
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.pagetitle {
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.loginform {
+    background-color: #EF212D;
+    padding: 15px;
+    height: 165px;
+    width: 200px;
+    border: 5px solid black;
+    margin: 0 auto;
+}
+
+.loginmenu {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.loginbutton {
+    background-color: #F8E01A;
+    border: 3px solid black;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.loginbutton:hover {
+    background-color: #C69F06;
+}
+
+.cartbutton {
+    background-color: #EF212D;
+    border: 3px solid black;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.cartbutton:hover {
+    background-color: #990000;
+}
+
+.pricetext {
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.profilemenu {
+    margin: 0 auto;
+    text-align: left;
+    height: 200px;
+    width: 200px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+}
+
+.profilebutton {
+    background-color:#EF212D;
+    border: 3px solid black;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.profilebutton:hover {
+    background-color: #990000;
+}
+
+.edittingprofile {
+    margin: 0 auto;
+    height: 200px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
 }

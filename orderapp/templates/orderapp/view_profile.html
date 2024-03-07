@@ -1,13 +1,42 @@
 {% extends 'orderapp/base.html' %}
 <!-- page for viewing profile for a user -->
 {% block content %}
-<h2>Profile for {{ user.username }}</h2>
+<!--Copying Navbar-->
+{% if user.is_authenticated %}
+    <p class="greeting">Hi {{ user.username }}!</p>
+    <div class="navbar">
+        <form action="{% url 'logout' %}" method="post" style="display:inline">
+            {% csrf_token %}
+            <button type="submit" class="navbutton">Log Out</button>
+        </form>
+        <a href="{% url 'orderapp:view_cart' %}">
+            <button type="button" class="navbutton">View Cart</button>
+        </a>
+        <a href="{% url 'orderapp:view_profile' %}">
+            <button type="button" class="navbutton">View Profile</button>
+        </a>
+        <a href="{% url 'orderapp:menuitem_list' %}">
+            <button type="button" class="navbutton">Menu</button>
+        </a>
+    </div>
+{% else %}
+<!-- only show login button if not logged in -->
+    <p class="greeting">You are not logged in</p>
+    <div class="navbar">
+        <a href="{% url 'login' %}"><button type="button" class="navbutton">Log In</button></a>
+    </div>
+{% endif %}
+<!--END of Copying Navbar-->
+
+<p class="pagetitle">Profile for {{ user.username }}</p>
+<div class="profilemenu">
 <h3>Name</h3>
 <p>{{ profile.name }}</p>
 <h3>Email Address</h3>
 <p>{{ profile.email }}</p>
 <!-- can click this button to go and edit profile -->
 <a class="btn btn-secondary" href="{% url 'orderapp:edit_profile' pk=profile.pk %}">
-<button type="button">Edit Profile</button>
+<button type="button" class="profilebutton">Edit Profile</button>
 </a>
+</div>
 {% endblock %}
